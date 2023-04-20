@@ -1,0 +1,36 @@
+JDBC-Template
+
+int 	update(PreparedStatementCreator psc)
+		Issue a single SQL update operation (such as an insert, update or delete statement) using a PreparedStatementCreator to provide SQL and any required parameters.
+		
+int 	update(PreparedStatementCreator psc, KeyHolder generatedKeyHolder)
+		Issue an update statement using a PreparedStatementCreator to provide SQL and any required parameters.
+		
+protected int 	update(PreparedStatementCreator psc, PreparedStatementSetter pss) 
+
+int 	update(String sql)
+		Issue a single SQL update operation (such as an insert, update or delete statement).
+		
+int 	update(String sql, Object... args)
+		Issue a single SQL update operation (such as an insert, update or delete statement) via a prepared statement, binding the given arguments.
+		
+int 	update(String sql, Object[] args, int[] argTypes)
+		Issue a single SQL update operation (such as an insert, update or delete statement) via a prepared statement, binding the given arguments.
+		
+int 	update(String sql, PreparedStatementSetter pss)
+		Issue an update statement using a PreparedStatementSetter to set bind parameters, with given SQL.
+		
+int[] 	batchUpdate(String... sql)
+		Issue multiple SQL updates on a single JDBC Statement using batching.
+		
+int[] 	batchUpdate(String sql, BatchPreparedStatementSetter pss)
+		Issue multiple update statements on a single PreparedStatement, using batch updates and a BatchPreparedStatementSetter to set values.
+		
+<T> int[][] 	batchUpdate(String sql, Collection<T> batchArgs, int batchSize, ParameterizedPreparedStatementSetter<T> pss)
+				Execute multiple batches using the supplied SQL statement with the collect of supplied arguments.
+				
+int[] 	batchUpdate(String sql, List<Object[]> batchArgs)
+		Execute a batch using the supplied SQL statement with the batch of supplied arguments.
+		
+int[] 	batchUpdate(String sql, List<Object[]> batchArgs, int[] argTypes)
+		Execute a batch using the supplied SQL statement with the batch of supplied arguments.

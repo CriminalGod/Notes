@@ -1,0 +1,6 @@
+NPM(Node Package Manager)
+
+need to install node
+
+Package.json
+node_modules folder

@@ -1,0 +1,88 @@
+pm.sendRequest(
+
+   {
+
+//    "url":"https://auth.test.herb.apcfss.in/auth/realms/herb/protocol/openid-connect/token",
+
+   "url":"https://auth.dev.herb.apcfss.in/auth/realms/herb/protocol/openid-connect/token",
+
+//    "url":"https://api.herb.apcfss.in:8443/auth/realms/herb/protocol/openid-connect/token",
+
+   "method":"POST",
+
+   "headers":{
+
+      "Content-Type":"application/x-www-form-urlencoded"
+
+   },
+
+   "body":{
+
+      "mode":"urlencoded",
+
+      "urlencoded":[
+
+         {
+
+            "key":"client_id",
+
+            "value":"herb-login"
+
+         },
+
+         {
+
+            "key":"username",
+
+            // "value":"14054914"
+
+            "value":"14109723"
+
+         },
+
+         {
+
+            "key":"password",
+
+            // "value":"654321"
+
+            // "value":"password"
+
+            "value":"cfss@123"
+
+         },
+
+         {
+
+            "key":"client_secret",
+
+            "value":"a6c4d661-34ee-4c7a-bc46-62fd05082337"//dev
+
+            // "value":"8935e0c7-1928-46e3-b2c1-b1df124ad466"//test
+
+            // "value":"1692c224-2b67-4527-8dca-a9e746f68084"//prd
+
+         },
+
+         {
+
+            "key":"grant_type",
+
+            "value":"password"
+
+         }
+
+      ]
+
+   }
+
+}, function (err, response) {
+
+    console.log(response.json().access_token);
+
+        pm.globals.set("tokenA", response.json().access_token);
+
+        //pm.collectionVariables.set("tokenA", response.json().access_token);
+
+});
+

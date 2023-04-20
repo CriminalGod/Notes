@@ -1,0 +1,42 @@
+1.what is the spring data repository
+2.what is the naming convention for the finder methods in spring data repository interfaces
+3.why is an interface not a class
+4.can we perform actual tasks like axios persist and manage data with jpa
+5.how can we create a custom repository in spring data repository
+6.what is paging and sorting repository
+7.what is @query used for
+8.give an example of using @query annotation with jpql
+9.can you name the different types of entity mappings.give example each one
+10.what is the platform transaction manager
+11.difference between findbyid and getone method
+12.how are spring data repositories implemented by spring at runtime
+13.difference between spring jdbc and spring ORM
+14.java 8 features
+15.how can we defined constructor
+16.can you explain starter dependency in spring boot
+17.explain spring accurate and its advantages
+18.what is spring boot dependency management
+19.what is major advantages of spring boot
+20.how many ways configure spring application
+21.difference between list and map and explain  implemented child classes
+22.explain filters and interceptors in springboot
+23.hashmap internal working
+24.string constantpool 
+25.difference between comparator and comparable
+26.what is the use of collection framework
+27.what is the root class of exception handling and explain
+28.difference between checked and unchecked exceptions and give examples
+29.difference between wait and sleep method
+30.what is deadlock in thread
+31.what is the difference between syncronization and syncronized block
+32.what is the priority of yield method
+33.what is the need of evict method in spring ORM
+34.difference between session factory and session in spring ORM 
+35.Explain spring boot annotations
+36.what is the legacy classes in collection framework
+37.how many ways we can create a thread
+38.oops concepts
+39.expalain about static block
+40.explain about object states
+41.expalin about spring bean scopes
+42.expalin about application context and bean factory

@@ -1,0 +1,165 @@
+\l - list of databases
+\dt - list of tables in current database
+\d table_name - describe a table
+\dn - list of schemas of current connected database
+\df - list of functions in current database
+\dv - list of views in the current database
+\du - list of users and assign roles
+\timing - to turn on or off time query execution time
+\c - switch connection to new database	
+\e - edit command in own editor
+\a - switches aligned to non-aligned column output
+\H - formats the outputto HTML format
+\q - to quit psql
+
+
+data-types*********************************************************
+
+boolean
+
+character :
+character varying(n), varchar(n)- variable length with length limit
+character(n), char(n) - fixed-length, blank-padded
+text,varchar - variable unlimited length
+
+numeric or numeric(precision, scale), NaN
+**[precision is the total number of digits and scale is the number of digits in the fraction part]**
+
+temporal data types*********************
+
+date[yyyy-mm-dd]	for current date, you can use the CURRENT_DATE after the DEFAULT keyword
+time
+timestamp - a timestamp without timezone one
+timestampz -  timestamp with a timezone
+interval
+
+
+array
+json and jsonb
+
+NOW()::date 
+CURRENT_DATE
+AGE(timestamp,timestamp)	[SELECT AGE('2017-01-01','2011-06-24'); || SELECT AGE(timestamp '2000-01-01');] 
+EXTRACT(YEAR FROM (timestamp '1998-05-09'))
+EXTRACT(MONTH FROM (timestamp '1998-05-09'))
+EXTRACT(DAY FROM (timestamp '1998-05-09'))
+
+	
+SHOW TIMEZONE;
+   TimeZone
+---------------
+ Asia/Calcutta
+ 
+ 
+NOW()	[current timestamp]
+select now();
+              now
+-------------------------------
+ 2021-04-21 01:11:51.281+05:30
+ 
+ 
+CURRENT_TIMESTAMP	[current timestamp]
+select current_timestamp;
+              now
+-------------------------------
+ 2021-04-21 01:12:19.032+05:30
+ 
+ 
+CURRENT_TIME	[current time with zone without date]
+select current_time;
+       timetz
+--------------------
+ 01:13:17.635+05:30
+ 
+ 
+select TIMEOFDAY(); [time of day in the string format]
+              timeofday
+-------------------------------------
+ Wed Apr 21 01:11:09.482000 2021 IST
+
+
+**[To convert 2016-06-01 00:00 to America/New_York timezone, you use the timezone() function]**
+SELECT timezone('America/New_York','2016-06-01 00:00');
+      timezone
+---------------------
+ 2016-05-31 14:30:00
+ 
+ 
+Contraints*****************************************
+
+NOT NULL
+UNIQUE
+PRIMARY KEY
+CHECK
+FOREIGN KEY
+
+
+DROP TABLE IF EXISTS accounts;
+
+create table if not exists accounts
+(
+user_id serial primary key,
+username varchar(50) unique not null, 
+password varchar(50) not null,
+email varchar(225) unique not null,
+created_on timestampz not null,
+last_login timestampz
+);
+
+insert into accounts(username, password, email, created_on,last_login)
+values('','','',now(),now()),
+('','','',now(),now())
+returning *;
+
+update accounts 
+set email = '',
+last_login = now()
+where user_id = 5
+returning *;
+ 
+delete from accounts where user_id = ? ;
+
+ALTER TABLE
+
+add a column
+drop a column
+change the datatype of a column
+rename a column
+set a default value for a column
+add a constraint to a column
+rename a table
+
+alter table accounts
+add column phone varchar(12),	[Adding a column with the NOT NULL constraint to a table that already has data gives an Error]
+add column location varchar(50);	[ERROR:  column "phone" contains null values]
+
+alter table accounts
+drop column if exists date_of_birth,
+drop column if exists fax;
+
+alter table accounts	[To rename multiple columns, you need to execute the ALTER TABLE RENAME COLUMN statement multiple times]
+rename column phone to mobile;
+
+alter table accounts
+alter column marital_status
+set default 'single';
+
+ALTER TABLE table_name 
+ALTER COLUMN column_name 
+[SET DEFAULT value | DROP DEFAULT];
+
+ALTER TABLE table_name 
+ALTER COLUMN column_name 
+[SET NOT NULL| DROP NOT NULL];
+
+ALTER TABLE table_name 
+ADD CHECK expression;
+
+ALTER TABLE table_name 
+ADD CONSTRAINT constraint_name constraint_definition;
+
+alter table accounts
+add constraint mobile unique (mobile)
+
+ALTER TABLE IF EXISTS table_name
+RENAME TO new_table_name;

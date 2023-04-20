@@ -1,0 +1,37 @@
+-->>Creating a backup table and it's related Function and Trigger
+
+-->>create backup table with columns tran_type (D or U) , tran_time (now())
+create table hrms.pension_verification_trans_flow_status_bkp as
+select 'D'::text tran_type , now() as tran_time, *
+from hrms.pension_verification_trans_flow_status
+where 1 != 1;
+
+-->>ADDING INSERT CONDITION
+
+-->>creating function
+create or replace function hrms.pension_verification_trans_flow_status_tran ()
+returns trigger as
+$BODY$
+begin
+       if (TG_OP = 'DELETE') then
+              insert into hrms.pension_verification_trans_flow_status_bkp select 'D', now(), OLD.* ;
+              return old;
+       elsif (TG_OP = 'UPDATE') then
+              insert into hrms.pension_verification_trans_flow_status_bkp select 'U', now(), OLD.*;
+              return new;
+       elsif (TG_OP = 'INSERT') then
+              insert into hrms.pension_verification_trans_flow_status_bkp select 'I', now(), NEW.*;
+              return new;
+       end if;
+       return null;
+-->>result is ignored since this is an AFTER trigger(two types trigger timings BEFORE and AFTER)
+end;
+$BODY$ LANGUAGE 'plpgsql';
+ 
+ 
+ 
+-->>creating trigger
+create trigger pension_verification_trans_flow_status_check_insert_update_delete
+before update or delete or insert on hrms.pension_verification_trans_flow_status
+for each row execute procedure hrms.pension_verification_trans_flow_status_tran();
+
