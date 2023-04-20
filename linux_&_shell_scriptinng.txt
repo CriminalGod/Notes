@@ -1,0 +1,71 @@
+login as: ubuntu
+Authenticating with public key "imported-openssh-key"
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 5.4.0-1045-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Tue Jun  8 11:17:01 UTC 2021
+
+  System load:  0.08              Processes:           93
+  Usage of /:   14.7% of 7.69GB   Users logged in:     0
+  Memory usage: 19%               IP address for eth0: 172.31.89.76
+  Swap usage:   0%
+
+0 packages can be updated.
+0 of these updates are security updates.
+
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+ubuntu@ip-172-31-89-76:~$ sudo su
+root@ip-172-31-89-76:/home/ubuntu# pwd
+/home/ubuntu
+root@ip-172-31-89-76:/home/ubuntu# ls
+root@ip-172-31-89-76:/home/ubuntu# touch new.txt
+root@ip-172-31-89-76:/home/ubuntu# ls
+new.txt
+root@ip-172-31-89-76:/home/ubuntu# mkdir downloads
+root@ip-172-31-89-76:/home/ubuntu# ls
+downloads  new.txt
+root@ip-172-31-89-76:/home/ubuntu# echo newText
+newText
+root@ip-172-31-89-76:/home/ubuntu# cd downloads
+root@ip-172-31-89-76:/home/ubuntu/downloads# ls
+root@ip-172-31-89-76:/home/ubuntu/downloads# cd ..
+root@ip-172-31-89-76:/home/ubuntu# cp new.txt downloads
+root@ip-172-31-89-76:/home/ubuntu# cd downloads
+root@ip-172-31-89-76:/home/ubuntu/downloads# ls
+new.txt
+root@ip-172-31-89-76:/home/ubuntu/downloads# rm new.txt
+root@ip-172-31-89-76:/home/ubuntu/downloads# ls
+root@ip-172-31-89-76:/home/ubuntu/downloads# cd ..
+root@ip-172-31-89-76:/home/ubuntu# nano new.txt
+root@ip-172-31-89-76:/home/ubuntu# cat new.txt
+welcome to putty nano editor
+aws
+root@ip-172-31-89-76:/home/ubuntu# nano new.txt
+root@ip-172-31-89-76:/home/ubuntu# cat new.txt
+welcome to putty nano editor
+
+
+aws
+
+
+root@ip-172-31-89-76:/home/ubuntu# ls -l
+total 8
+drwxr-xr-x 2 root root 4096 Jun  8 11:26 downloads
+-rw-r--r-- 1 root root   37 Jun  8 11:33 new.txt
+root@ip-172-31-89-76:/home/ubuntu# ls -a
+.  ..  .bash_logout  .bashrc  .cache  .gnupg  .profile  .ssh  .sudo_as_admin_successful  downloads  new.txt
+root@ip-172-31-89-76:/home/ubuntu#

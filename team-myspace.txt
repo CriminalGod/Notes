@@ -1,0 +1,131 @@
+TRANSACTION MANAGEMENT
+AWS SDK
+GIT REVERT
+MULTIPART REQUEST
+AWS CLI
+S3 BUCKET
+I/O STREAMS
+ENCRYPTION/DECRYPTION
+SECURITY
+JPA(ENTITY MANAGER)
+MULTIPLE DATABASE CONFIG
+LOGGING
+INTERCEPTORS
+JACKSON API/OBJECT MAPPER
+DATE/TIME API
+ITEXT
+CLASS BASED CONFIG
+
+
+
+
+GET ALL CHILD TABLES OF A PARENT TABLE [[POSTGRESQL]]
+select distinct q.table_name
+from information_schema.table_constraints q 
+right join information_schema.constraint_column_usage w 
+on (q.constraint_catalog = w.constraint_catalog 
+and q.constraint_schema = w.constraint_schema 
+and q.constraint_name = w.constraint_name 
+and (w.table_schema, w.table_name) in (('hrms', 'pension_proposal')))
+where lower(q.constraint_type) in ('foreign key');
+
+
+GET ALL COLUMNS OF A TABLE [[POSTGRESQL]]
+select column_name from information_schema.columns
+where table_schema = 'hrms' and table_name = 'pension_proposal';
+
+
+https://www.logicbig.com/tutorials/spring-framework/spring-core/quick-start.html
+
+
+
+
+jdk11
+postgresql v13.4
+
+
+spring 5.3.9
+spring-boot-starters -2.5.4
+poi-ooxml - 5.2.0
+itextpdf - 5 and 7
+keycloak - 15.0.1
+postgres - 42.2.23
+lombok - 1.18.20
+springdoc-openapi-ui-1.5
+
+
+[[POSTGRESQL]]DISABLE TRIGGER
+ALTER TABLE hrms.pension_verification_trans_flow_status 
+disable TRIGGER pension_verification_trans_flow_status_check_insert_update_dele
+
+ENABLE TRIGGER
+ALTER TABLE hrms.pension_verification_trans_flow_status 
+enable TRIGGER pension_verification_trans_flow_status_check_insert_update_dele
+
+@Query(value = "call public.bifurcation_pack_sp_calc_bifurcation(:apgliNo)", nativeQuery = true)    
+void bifurcation_pack_sp_calc_bifurcation(String apgliNo);
+
+
+UNDER-SCORED TO CAMEL-CASED
+function toCamelCase(str) {
+    const dbColumnNamesArray = str.split(',');
+    const camelCasedArray = [];
+    var index = 0;
+    for (const dbColumn of dbColumnNamesArray) {
+        const underScoredSplittedArray = dbColumn.split('_');
+        const result = [];
+        for (const word of underScoredSplittedArray) {
+            if (index !== 0)
+                result.push(word.charAt(0).toUpperCase() + word.slice(1));
+            else
+                result.push(word.charAt(0) + word.slice(1));
+            index++;
+        }
+        camelCasedArray.push(' ' + dbColumn + ' as ' + result.join(''));
+        index = 0;
+    }
+    return camelCasedArray.join(',')
+}
+console.log(toCamelCase('q.ltc_id, q.cfms_id, q.block_peroid, q.home_town_any'));
+
+
+BUILDER PATTERN CODE GENERATOR
+function builderCodeGen(str) {
+const splitArr = str.split(';');
+const finalArr = [];
+for (let field of splitArr) {
+    if (field !== undefined && field !== null && field.trim() !== '') {
+        field = field.trim() + ';';
+        let i = field.indexOf(';');
+        let li = field.lastIndexOf(' ') + 1;
+        let subStr = field.substring(li, i)
+        finalArr.push(subStr + '(null)');
+    }
+}
+const finalBuilderStr = finalArr.join('.');
+return '.builder().' + finalBuilderStr + '.build();';
+}
+console.log(builderCodeGen('@Id    @GeneratedValue(strategy = GenerationType.IDENTITY)    @Column(name = "ltc_id")    private Long ltcId;    @Column(name = "anywhere_availed")    private String anywhereAvailed;    @Column(name = "bill_amount")    private BigDecimal billAmount;'))
+
+
+
+
+
+
+https://superuser.com/questions/1486054/windows-terminal-predefined-tabs-on-startup
+
+
+https://medium.com/@wahyaumau/boost-jpa-bulk-insert-performance-by-90-3a6232d9068d
+
+
+
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder=TRACE
+
+
+The dependencies of some of the beans in the application context form a cycle:
+
+
+
+=TRIM(LEFT(A4, SEARCH("-",A4,1)-1)) =TRIM(MID(A4,SEARCH("-",A4)+1,LEN(A4)-SEARCH("-",A4)+1-(LEN(A4)-FIND("@",SUBSTITUTE(A4,"-","@",LEN(A4)-LEN(SUBSTITUTE(A4,"-",""))),1)+2))) 
+=TRIM(RIGHT(A4,LEN(A4)-FIND("@",SUBSTITUTE(A4,"-","@",LEN(A4)-LEN(SUBSTITUTE(A4,"-",""))),1))) 
+

@@ -1,0 +1,72 @@
+Java REFLECTION
+
+java.lang.Class		-	class
+java.lang.reflect	-	package
+
+Provides methods to get the metadata of a class at run  time.
+Provides methods to examine and change the run time behaviour of a class.
+
+
+getName()					-	String
+forName(String className)	-	Class		-	static method
+newInstance()				-	Object
+isInterface()				-	boolean
+isArray()					-	boolean
+isPrimitive()				-	boolean
+getSuperClass()				-	Class
+getDeclaredFields()			-	Field[]
+getDeclaredMethods()		-	Method[]
+getDeclaredContructors()	-	Contructor[]
+
+getDeclaredMethod(String className, Class[] parameterTypes)	-	Method
+
+
+There are 3 ways to get the instance of Class class.
+
+.forName() method of Class class
+.getClass() method of Object class
+.class syntax
+
+
+class Test 
+{
+	public static void main(String args[])
+	{
+		Class c = Class.forName("Test");	//	need to give FULLY QUALIFIED NAME and this CANNOT BE USED for PRIMITIVE types.
+		System.out.println(c.getName());	//	Test
+	}
+}
+
+class Test
+{
+	public static void main(String args[])
+	{
+		Test t = new Test();
+		Class c = t.getClass();		// IT CAN BE USED WITH PRIMITIVES ALSO
+		System.out.println(c.getName());	//	Test
+	}
+}
+
+class Test
+{
+	public static void main(String args[])
+	{
+		Class c =  boolean.class;	// used when a TYPE IS AVAILABLE but there is NO INSTANCE and used for PRIMITIVE data type also.
+		System.out.println(c.getName());	//	boolean
+		
+		Class cc = Test.class;
+		System.out.println(cc.getName());	//	Test
+	}
+}
+
+
+java.lang.reflect.AccessibleObject	-	class
+java.lang.reflect.Method 			-	class
+
+java.lang.Object -> java.lang.reflect.AccessibleObject -> java.lang.reflect.Executable -> java.lang.reflect.Method
+
+.setAccessible(boolean status)		-	void
+Set the accessible flag for this object to the indicated boolean value.
+
+.invoke(Object obj, Object... args)	-	Object
+Invokes the underlying method represented by this Method object, on the specified object with the specified parameters.

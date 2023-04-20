@@ -1,0 +1,30 @@
+Map interface
+HashMap
+LinkedHashMap
+TreeMap
+
+HashMap
+
+HashMap map = new HashMap();
+Map map = new HashMap();
+
+coupling
+
+Key, value - Objects
+
+map.get("key)
+map.put("key","value")
+map.remove("key")
+map.keySet() - Set
+map.values() - Collection
+map.contains("key") - boolean
+
+map.put(null , "rakesh")
+map.put("name", "Kumar")
+map.put(null, "CriminalGod")
+
+map.keySet() --> null, name
+map.get(null) --> CriminalGod
+map.get("name") --> kumar
+
+q

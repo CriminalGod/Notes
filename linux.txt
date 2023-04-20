@@ -1,0 +1,16 @@
+sudo su
+echo $0
+
+
+
+Feature of shell Scripting
+1. You can execcute no of commands at a time.
+2. It automates your daily work.
+3. You can execute your script n no. of times.
+
+Difference between shell scripting and programming
+1. interpreter based					1. compiler based
+2. no need any special environment.		2. it needs special environment.
+
+1. system defined variables: created and maintained, defined by system only
+2. user defined variables: created, defined and maintained by us.

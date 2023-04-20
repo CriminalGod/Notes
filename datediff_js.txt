@@ -1,0 +1,135 @@
+function dateDiff(beginDate, closedDate,seperator) {
+    var monthWiseDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    var years;
+    var months;
+    var days;
+   
+    var arr = beginDate.split(seperator);
+    var firstDate = arr[1]+'/'+arr[0]+'/'+arr[2];
+    arr = closedDate.split(seperator);
+    var secondDate = arr[1]+'/'+arr[0]+'/'+arr[2];
+   
+    var date1 = new Date(firstDate);
+    var date2 = new Date(secondDate);
+
+    var startDate = {
+        year: date1.getFullYear(),
+        month: date1.getMonth(),
+        day: date1.getDate()
+    };
+
+    var endDate = {
+        year: date2.getFullYear(),
+        month: date2.getMonth(),
+        day: date2.getDate()
+    }
+
+    var i = startDate.year;
+    var extraDays = 0;
+   
+    var startArr = beginDate.split(seperator);
+    var endArr = closedDate.split(seperator);
+   
+    if(startDate.day==startArr[0] && endDate.day==endArr[0]){
+ 
+    //checking current year if it is a leap year
+    if (leapYearCheck(endDate.year)) {
+        monthWiseDays[1] = 29;
+    } else {
+        monthWiseDays[1] = 28;
+    }
+    //leap year check
+    for (i; i < endDate.year; i++) {
+        if (leapYearCheck(i)) {
+            extraDays++;
+        }
+    }
+
+    //EndDate Should greater than StartDate
+    if (startDate.year > endDate.year ||
+        (startDate.month > endDate.month && startDate.year > endDate.year) ||
+        (startDate.day > endDate.day && startDate.month == endDate.month && startDate.year == endDate.year)) {
+        alert("EndDate Should greater than StartDate...");
+    }
+    //if (endDate.day <= monthWiseDays[endDate.month] && startDate.day <= monthWiseDays[startDate.month]) {
+        //year calculation
+        years = endDate.year - startDate.year;
+
+        //months calculation
+        if (endDate.month >= startDate.month) {
+            months = endDate.month - startDate.month;
+        } else {
+            years--;
+            months = 12 + endDate.month - startDate.month;
+        }
+
+        //days calculation
+        if (endDate.day >= startDate.day) {
+            days = endDate.day - startDate.day;
+        } else {
+            months--;
+            var totalDays = monthWiseDays[endDate.month - 1];
+            days = totalDays + endDate.day - startDate.day;
+            if (months < 0) {
+                months = 11;
+                years--;
+            }
+        }
+        console.log(years, months, days);
+
+        if (startDate.day != 29) {
+            //with leap years
+            if (leapYearCheck(endDate.year)) {
+                if (endDate.month > 1) {
+                    extraDays++;
+                }
+            }
+
+            days += extraDays;
+
+            if (days > monthWiseDays[endDate.month]) {
+                months++;
+                days = days - monthWiseDays[endDate.month];
+                if (months > 12) {
+                    years++;
+                    months = months - 12;
+                }
+            }
+
+            console.log('with leap '+years, months, days);
+        }
+   /* }else{
+        console.log("enter Valid dates")
+    }*/
+    }else{
+        console.log('enter valid dates...')
+    }
+}
+
+function leapYearCheck(year) {
+    var flag = false;
+    if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+        flag = true;
+    }
+    return flag;
+}
+
+
+
+
+
+
+
+
+
+
+
+dor+1 day     till Death
+
+NA		dor+7
+
+dor+7+1day    till Death
+
+
+
+

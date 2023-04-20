@@ -1,0 +1,58 @@
+elementRef.classList;
+elementRef.classList.add('c');
+elementRef.className;
+elementRef.className = 'c';
+elementRef.setAttribute('class','c');
+
+elementRef.style.property;
+elementRef.style.property = 'value';
+
+var obj={};
+obj.name = 'name';
+obj['last name'] = 'last name';
+
+
+Object.assign(target,......sources,{key : value});
+var obj = {
+	...obj1,
+	...obj2,
+	key : value
+}
+spread operator(...)
+
+
+
+function f1(){
+	alert('HEY');
+}
+f1();
+f1.call(); [executes function]
+f1.apply(); [executes function]
+f1.bind(); [return f1 function]
+f1.bind()(); [executes function]
+
+f1.call(this_obj,...args);
+f1.apply(this_obj,?argArray);
+f1.bind(this_obj,...argArray)();
+
+function f1(a+b){
+	debugger;
+	console.log(a+b+this.x);
+}
+by default 'this' indicates window object.
+
+
+
+arr.length;[length is a property]
+arr.forEach(function(v,i){});
+arr.slice(?start, ?end);
+arr.filter(function(v,i){
+	return cond;
+});
+arr.map(funciton(v,i){
+	return cond;
+});
+
+constructor 
+1. allocates memory 
+2. used to perform initialization
